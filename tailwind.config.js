@@ -87,8 +87,8 @@ export default {
           light: '#819da6',
         },
         primary: {
-          text: '#050926',
-          background: '#EEEFF7',
+          text: '#1E293B',
+          background: '#F1F5F9',
         },
         gray: { DEFAULT: '#707070', light: '#ddd' },
         black: {

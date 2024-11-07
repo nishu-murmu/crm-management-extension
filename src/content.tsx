@@ -14,13 +14,14 @@ export default defineContentScript({
       position: 'inline',
       onMount: async (container) => {
         removeDownloadExtensionSection();
+        const { last_top_position } = await chrome.storage.local.get();
 
         const app = document.createElement('div');
         container.append(app);
         const root = ReactDOM.createRoot(app);
         root.render(
           <Provider>
-            <Main />
+            <Main lastTopPosition={last_top_position} currentStoreInfo={{}} />
           </Provider>
         );
         return root;
