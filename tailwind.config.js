@@ -104,7 +104,7 @@ export default {
         '2xl': '16px',
       },
       boxShadow: {
-        header: '0px 4px 4px 0px #00000040',
+        header: '0px 3px 4px 0px #00000015',
         body: '-4px 4px 10px 0px #00000040',
       },
       animation: {

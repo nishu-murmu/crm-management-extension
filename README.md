@@ -1,3 +1,5 @@
 - [x] remove unwanted code
 - [x] update metadata
-- [ ] add new features
+- [ ] create dropdown for filtering tickets via assignee name
+- [x] create icon for Blackbox AI integration (functionality)
+- [x] create routes like settings and home.
