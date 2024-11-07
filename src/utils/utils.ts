@@ -308,3 +308,68 @@ export function injectTicketManager() {
 
   // injectButtons()
 }
+
+export function getChatsFromPage() {
+  // Function to clean text content by removing extra whitespace and newlines
+  const cleanText = (text) => {
+    return text.replace(/\s+/g, ' ').replace(/\n+/g, ' ').trim();
+  };
+
+  // Function to extract chats from HTML content
+  const extractChats = (htmlContent) => {
+    // Create a DOM parser
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(htmlContent, 'text/html');
+
+    // Find all panel bodies containing chats
+    const chatPanels = doc.querySelectorAll('.panel-body');
+    const chats = [] as { name: string; type: string; chat: string }[];
+
+    chatPanels.forEach((panel) => {
+      // Skip if it's not a chat panel
+      if (!panel.querySelector('.ticket-submitter-info')) return;
+
+      // Determine if it's a client reply
+      const isClient = panel.classList.contains('client-reply');
+
+      // Extract name
+      const nameElement = panel.querySelector(
+        '.ticket-submitter-info p:first-child a'
+      );
+      if (!nameElement) return;
+      const name = (nameElement.textContent?.trim() || '') as string;
+
+      // Extract chat content
+      const contentElement = panel.querySelector('.tc-content');
+      if (!contentElement) return;
+      const chat = cleanText(contentElement.textContent);
+
+      // Create chat object
+      chats.push({
+        name: name,
+        type: isClient ? 'customer' : 'staff',
+        chat: chat,
+      });
+    });
+
+    return chats;
+  };
+
+  // Function to format chats as text
+  const formatChatsAsText = (chats) => {
+    return chats
+      .map((chat, index) => {
+        return `=== Message ${index + 1} ===
+Name: ${chat.name}
+Type: ${chat.type}
+Message: ${chat.chat}
+`;
+      })
+      .join('\n');
+  };
+
+  // Main execution
+  const htmlContent = document.documentElement.innerHTML;
+  const chats = extractChats(htmlContent);
+  return formatChatsAsText(chats);
+}

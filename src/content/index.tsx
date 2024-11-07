@@ -123,7 +123,7 @@ function createRephraseButtonUi(ctx: any) {
     name: 'enacton-crm-rephrase-button',
     position: 'inline',
     css: 'display: none;',
-    anchor: paraElem,
+    anchor: '[app-field-wrapper="message"]',
     append: 'last',
     onMount: async (container) => {
       const app = document.createElement('div');

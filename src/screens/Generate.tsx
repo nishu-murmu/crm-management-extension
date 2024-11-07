@@ -13,19 +13,21 @@ const Generate = () => {
 
   // State management
   const [customPrompt, setCustomPrompt] = useState('');
-  const [selectedOption, setSelectedOption] = useState(promptOptions[0].id);
+  const [selectedOption, setSelectedOption] = useState(promptOptions[0]);
   const [generatedResponse, setGeneratedResponse] = useState('');
   const { generateBlackBoxReport } = useContent();
 
   // Handle form submission
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const response = await generateBlackBoxReport();
+
+    const currentPrompt = `${customPrompt} \n\n ${selectedOption?.name}`;
+    const response = await generateBlackBoxReport(currentPrompt);
     setGeneratedResponse(response);
   };
 
   return (
-    <div className="cp-container cp-mx-auto cp-p-6 cp-flex cp-flex-col cp-h-screen">
+    <div className="cp-container cp-mx-auto cp-p-6 cp-flex cp-flex-col cp-overflow-y-auto custom-scrollbar">
       <form onSubmit={handleSubmit} className="cp-space-y-6 cp-flex-1">
         {/* Custom Prompt Textarea */}
         <div>
@@ -54,8 +56,15 @@ const Generate = () => {
           </label>
           <select
             id="promptType"
-            value={selectedOption}
-            onChange={(e) => setSelectedOption(Number(e.target.value))}
+            value={selectedOption?.id}
+            onChange={(e) => {
+              setSelectedOption(
+                //@ts-ignore
+                promptOptions.find(
+                  (option) => option.id === Number(e.target.value)
+                )
+              );
+            }}
             className="cp-w-full cp-p-3 cp-border cp-rounded-lg"
           >
             {promptOptions.map((option) => (
