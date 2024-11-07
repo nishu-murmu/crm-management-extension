@@ -1,0 +1,115 @@
+/* Modern container styles */
+.has-row-options {
+    background: #fff !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    border-radius: 12px !important;
+    margin: 12px 0 !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06) !important;
+    backdrop-filter: blur(8px) !important;
+    border: 1px solid rgba(0,0,0,0.06) !important;
+}
+
+.has-row-options:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.08) !important;
+}
+
+.has-row-options td {
+    padding: 18px 16px !important;
+    vertical-align: middle !important;
+    font-size: 14px !important;
+    line-height: 1.5 !important;
+    color: #1F2937 !important;
+}
+
+/* Enhanced status badge */
+.ticket-status-1 {
+    display: inline-flex !important;
+    align-items: center !important;
+    padding: 6px 14px !important;
+    border-radius: 24px !important;
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.6px !important;
+    background: linear-gradient(135deg, #E8F5E9 0%, #C8E6C9 100%) !important;
+    color: #1B5E20 !important;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05) !important;
+}
+
+/* Modern priority indicators */
+.priority-indicator {
+    width: 10px !important;
+    height: 10px !important;
+    border-radius: 50% !important;
+    display: inline-block !important;
+    margin-right: 10px !important;
+    box-shadow: 0 0 0 2px rgba(255,255,255,0.8) !important;
+}
+
+.priority-high { background: linear-gradient(135deg, #FF5252 0%, #F44336 100%) !important; }
+.priority-medium { background: linear-gradient(135deg, #FFB74D 0%, #FFA726 100%) !important; }
+.priority-low { background: linear-gradient(135deg, #81C784 0%, #66BB6A 100%) !important; }
+
+/* Refined assignee card */
+.assignee-name {
+    background: linear-gradient(135deg, #FFFFFF 0%, #F8FAFC 100%) !important;
+    border: 1px solid rgba(0,0,0,0.08) !important;
+    border-radius: 10px !important;
+    padding: 10px 14px !important;
+    margin-top: 8px !important;
+    font-size: 13px !important;
+    color: #334155 !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04) !important;
+}
+
+.assignee-avatar {
+    width: 28px !important;
+    height: 28px !important;
+    border-radius: 50% !important;
+    background: linear-gradient(135deg, #F1F5F9 0%, #E2E8F0 100%) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 13px !important;
+    color: #475569 !important;
+    font-weight: 600 !important;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05) !important;
+}
+
+/* Enhanced days badge */
+.days-badge {
+    display: inline-flex !important;
+    align-items: center !important;
+    padding: 6px 12px !important;
+    border-radius: 8px !important;
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    gap: 6px !important;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05) !important;
+}
+
+.days-badge.warning {
+    background: linear-gradient(135deg, #FFF3E0 0%, #FFE0B2 100%) !important;
+    color: #E65100 !important;
+}
+
+.days-badge.danger {
+    background: linear-gradient(135deg, #FFEBEE 0%, #FFCDD2 100%) !important;
+    color: #C62828 !important;
+}
+
+/* Modern category tags */
+.ticket-category {
+    display: inline-flex !important;
+    align-items: center !important;
+    padding: 8px 14px !important;
+    border-radius: 8px !important;
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    background: linear-gradient(135deg, #F3F4F6 0%, #E5E7EB 100%) !important;
+    color: #374151 !important;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05) !important;
+}
