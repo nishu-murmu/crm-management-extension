@@ -7,7 +7,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
       case 'GET_CURRENT_TAB':
         sendResponse(sender.tab);
         break;
-      case 'GET_STORE_COUPONS':
+      case 'GENERATE_REPORT':
         const message_id = uuidv4();
         const response = await fetch(config.BLACKBOX_API_ENDPOINT, {
           headers: {
