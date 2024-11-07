@@ -1,4 +1,3 @@
-import icon from '@/public/images/logo-icon.png';
 import useGlobal from '@/src/hooks/use-global';
 import AppRouter from '@/src/router/AppRouter';
 import Toast from '../core/Toast';

@@ -33,7 +33,6 @@ const FloatingIcon = ({ lastTopPosition }) => {
     return () => {
       chrome.runtime.onMessage.removeListener(handleCallbackFunction);
     };
-    return () => {};
   }, [elementRef.current, mainPopupRef]);
 
   useEffect(() => {
@@ -91,7 +90,7 @@ const FloatingIcon = ({ lastTopPosition }) => {
   }, [isPopUpOpen, mainPopupRef]);
 
   return (
-    <div style={{ display: true ? 'block' : 'none' }}>
+    <div style={{ display: 'block' }}>
       <div
         ref={elementRef}
         style={{
@@ -101,16 +100,16 @@ const FloatingIcon = ({ lastTopPosition }) => {
           zIndex: 9999999,
           userSelect: 'none',
         }}
-        className="cp-h-[60px] cp-flex cp-items-center"
+        className="cp-h-[35px] cp-flex cp-items-center"
       >
         <>
           <div
             onClick={handleClick}
-            className="cp-relative cp-animate-translate-x-in cp-flex-shrink-0 cp-size-[60px] cp-flex cp-items-center cp-justify-center cp-bg-primary-background cp-rounded-l-xl"
+            className="cp-relative cp-animate-translate-x-in cp-flex-shrink-0 cp-size-[35px] cp-flex cp-items-center cp-justify-center cp-bg-primary-background cp-border-l cp-border-t cp-border-b cp-border-primary-text/20 cp-rounded-l-xl"
           >
             <img
               src={icon}
-              className="cp-size-12"
+              className="cp-size-5"
               alt="Floating Icon"
               draggable="false"
             />

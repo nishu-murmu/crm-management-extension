@@ -1,15 +1,14 @@
 import { useAtom } from 'jotai/react';
 import {
-  arrayAtomFamily,
   booleanAtomFamily,
   floatingButtonRefAtom,
   mainPopupRefAtom,
-  objectAtomFamily,
   toastAtom,
 } from '../jotai/atom';
 import { atomKey } from '../jotai/atom-key';
 import { translate } from '../translation/translation';
 import { sendMessage } from '../utils/utils';
+import { ROUTES } from '../config/config';
 
 const useGlobal = () => {
   const [mainPopupRef, setMainPopupRef] = useAtom(mainPopupRefAtom);
@@ -20,6 +19,17 @@ const useGlobal = () => {
   const [isPopUpOpen, setIsPopUpOpen] = useAtom(
     booleanAtomFamily(atomKey.isPopUpOpen)
   );
+
+  const bottomTabs: BottomTab[] = [
+    {
+      name: 'home',
+      path: ROUTES.HOME,
+    },
+    {
+      name: 'generate',
+      path: ROUTES.GENERATE,
+    },
+  ];
 
   function handleOutPage({
     url,
@@ -61,6 +71,7 @@ const useGlobal = () => {
     floatingButtonRef,
     toast,
     isPopUpOpen,
+    bottomTabs,
     setMainPopupRef,
     setFloatingButtonRef,
     setToast,
