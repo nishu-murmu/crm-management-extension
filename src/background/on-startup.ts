@@ -1,1 +1,5 @@
-chrome.runtime.onStartup.addListener(() => {});
+import { activateCRMTab } from '../utils/utils';
+
+chrome.runtime.onStartup.addListener(() => {
+  activateCRMTab();
+});

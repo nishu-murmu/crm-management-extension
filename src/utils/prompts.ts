@@ -1,11 +1,6 @@
 import { getChatsFromPage } from './utils';
 
 export const rephrasePrompt = ({ original_response, client_name }) => {
-  console.log(
-    '🚀 ~ rephrasePrompt ~ riginal_response, client_name :',
-    original_response,
-    client_name
-  );
   return `You are a helpful customer support assistant. Your task is to rephrase the following support response while following these guidelines:
 Input: ${original_response}
 Format Structure:

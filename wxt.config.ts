@@ -1,4 +1,5 @@
 import { defineConfig } from 'wxt';
+import { config } from './src/config/config';
 
 // See https://wxt.dev/api/config.html
 export default defineConfig({
@@ -6,9 +7,8 @@ export default defineConfig({
     'build:manifestGenerated': (wxt, manifest) => {
       manifest.content_scripts ??= [];
       manifest.content_scripts.push({
-        // Build extension once to see where your CSS get's written to
         css: ['content-scripts/custom.css'],
-        matches: ['*://*/*'],
+        matches: [config.CRM_TICKETS_PAGE, config.CRM_TICKET_PAGE + '*'],
       });
     },
   },

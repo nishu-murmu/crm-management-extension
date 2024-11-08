@@ -3,3 +3,5 @@
 - [ ] create dropdown for filtering tickets via assignee name
 - [x] create icon for Blackbox AI integration (functionality)
 - [x] create routes like settings and home.
+- [ ] fix the back ground color issue in tickets page
+- [ ] move rephrase button to the right side of the regenerate button

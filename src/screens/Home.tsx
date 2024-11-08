@@ -12,7 +12,7 @@ const Home = () => {
       </h1>
 
       <button
-        onClick={generateBlackBoxReport}
+        onClick={() => generateBlackBoxReport()}
         className="cp-bg-blue-600 cp-text-white cp-px-6 cp-py-3 cp-rounded-lg cp-shadow-md hover:cp-bg-blue-700 cp-transition-colors cp-font-medium"
       >
         {translate('generateBlackBoxReport')}
