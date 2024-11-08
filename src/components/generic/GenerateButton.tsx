@@ -1,4 +1,6 @@
 import { SparklesIcon } from '@heroicons/react/24/outline';
+import TooltipComponent from '../core/Tooltip';
+import { translate } from '@/src/translation/translation';
 
 const GenerateButton = () => {
   function onClickHandler() {
@@ -9,8 +11,15 @@ const GenerateButton = () => {
       onClick={() => {
         onClickHandler();
       }}
+      className="cp-p-2 cp-mt-1 cp-rounded-lg cp-cursor-pointer"
     >
-      <SparklesIcon className="cp-w-4 cp-h-4 cp-cursor-pointer" />
+      <TooltipComponent
+        hoverElement={<SparklesIcon className="cp-w-5 cp-h-5" />}
+        id="generateTooltip"
+        placement="bottom-end"
+        contentData={translate('generateTooltip')}
+        className="!max-w-[320px] !w-full"
+      />
     </div>
   );
 };

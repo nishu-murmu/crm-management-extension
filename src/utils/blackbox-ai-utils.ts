@@ -6,10 +6,7 @@ export async function fetchBlackBoxAiResponse(prompt: string) {
 
   return fetch(config.BLACKBOX_API_ENDPOINT, {
     headers: {
-      accept: '*/*',
-      'accept-language': 'en-GB,en;q=0.7',
-      'content-type': 'application/json',
-      priority: 'u=1, i',
+      'Content-Type': 'application/json',
     },
     body: JSON.stringify({
       messages: [
@@ -41,6 +38,7 @@ export async function fetchBlackBoxAiResponse(prompt: string) {
       validated: '69783381-2ce4-4dbd-ac78-35e9063feabc',
     }),
     method: 'POST',
+    mode: 'no-cors',
     credentials: 'include',
   }).then((r) => r.text());
 }

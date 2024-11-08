@@ -1,0 +1,48 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  .cp-transition-ease {
+    @apply cp-transition-all cp-duration-[ease] cp-delay-[0.5s];
+    -webkit-transition: all ease 0.5s;
+  }
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+/* Hide scrollbar for IE, Edge and Firefox */
+.no-scrollbar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+.custom-scrollbar::-webkit-scrollbar {
+  @apply cp-max-w-1.5 cp-max-h-1 cp-bg-transparent cp-rounded;
+}
+/* Track */
+.custom-scrollbar::-webkit-scrollbar-track {
+  @apply cp-bg-transparent cp-rounded;
+}
+/* Handle */
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  @apply cp-bg-green-light cp-rounded;
+}
+.cp-coupon-btn-gr {
+  background: linear-gradient(
+      315deg,
+      rgba(0, 0, 0, 6%) 10%,
+      transparent 15%,
+      transparent 35%,
+      rgba(0, 0, 0, 6%) 40%,
+      rgba(0, 0, 0, 6%) 60%,
+      transparent 65%,
+      transparent 85%,
+      rgba(0, 0, 0, 6%) 90%
+    )
+    repeat 0 0 / 6px 6px;
+}
+.cp-get-code::after {
+  @apply cp-content-[""] cp-block cp-w-0 cp-h-0 cp-absolute -cp-right-8 cp-border-l-[32px] cp-border-l-green-dark cp-border-t-[32px] cp-border-t-transparent cp-border-solid cp-top-0;
+}

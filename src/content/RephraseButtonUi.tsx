@@ -13,7 +13,7 @@ export function createRephraseButtonUi(ctx: any) {
     name: 'enacton-crm-rephrase-button',
     position: 'inline',
     css: 'display: none;',
-    anchor: '[app-field-wrapper="message"]',
+    anchor: '.tox-toolbar__primary',
     append: 'last',
     onMount: async (container) => {
       const app = document.createElement('div');

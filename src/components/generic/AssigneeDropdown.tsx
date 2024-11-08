@@ -1,34 +1,42 @@
-import { translate } from '@/src/translation/translation';
 import {
   getAssigneeName,
-  getKeyAndValue,
   getNameObject,
   getUniqueAssigneeNames,
 } from '@/src/utils/utils';
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import Dropdown from '../core/Dropdown';
 
 const AssigneeDropdown = () => {
   const [assignees, setAssignees] = useState<{ key: string; value: string }[]>(
     []
   );
-  const [selectedAssignee, setSelectedAssignee] = useState('');
+  const [selectedAssignee, setSelectedAssignee] = useState('all');
+
+  function getValueFromKey(name: string) {
+    const [key, value] = name.split('\n').map((n) => n.trim());
+    return { key, value };
+  }
 
   useEffect(() => {
     const names = getUniqueAssigneeNames();
     setAssignees([
       { key: 'all', value: 'All' },
-      ...names.map(([key, value]) => ({ key, value })),
+      ...names.map(([key, value]) => {
+        const { key: assigneeKey, value: assigneeValue } =
+          getValueFromKey(value);
+        return { key: assigneeKey, value: assigneeValue };
+      }),
     ]);
   }, []);
 
-  const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    const selectedAssignee = event.target.value;
+  const handleChange = (event: any) => {
+    const selectedAssignee = event;
     setSelectedAssignee(selectedAssignee);
 
     const ticketRows = document.querySelectorAll(
       '.has-row-options'
     ) as NodeListOf<HTMLElement>;
-    if (event.target.value === 'all') {
+    if (!event || selectedAssignee.id === 'all') {
       ticketRows.forEach((row) => {
         row.style.display = '';
       });
@@ -36,8 +44,8 @@ const AssigneeDropdown = () => {
     }
 
     ticketRows.forEach((row) => {
-      const { key: assigneeKey } = getNameObject(getAssigneeName(row));
-      if (assigneeKey === selectedAssignee) {
+      const { key: assigneeKey } = getValueFromKey(getAssigneeName(row));
+      if (assigneeKey === selectedAssignee.id) {
         row.style.display = '';
       } else {
         row.style.display = 'none';
@@ -46,20 +54,14 @@ const AssigneeDropdown = () => {
   };
 
   return (
-    <div className="cp-w-full cp-max-w-xs cp-mb-4">
-      <select
+    <div className="cp-w-full cp-mb-4">
+      <Dropdown
         id="assignee-dropdown"
+        className="cp-w-[220px] cp-bg-white cp-border cp-border-gray-400 cp-rounded-lg cp-leading-tight focus:cp-outline-none focus:cp-border-blue-500"
+        people={assignees.map(({ key, value }) => ({ id: key, name: value }))}
         value={selectedAssignee}
         onChange={handleChange}
-        className="cp-block cp-w-full cp-bg-white cp-border cp-border-gray-400 cp-py-2 cp-px-3 cp-rounded cp-leading-tight focus:cp-outline-none focus:cp-border-blue-500"
-      >
-        <option value="">{translate('selectAnAssignee')}</option>
-        {assignees.map(({ key, value }) => (
-          <option key={key} value={key}>
-            {value}
-          </option>
-        ))}
-      </select>
+      />
     </div>
   );
 };

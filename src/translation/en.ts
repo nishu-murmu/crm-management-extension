@@ -10,4 +10,7 @@ export const en = {
   generatedContentWillAppear: 'Generated content will appear here...',
   selectAssignee: 'Select Assignee',
   selectAnAssignee: '-- Select an Assignee --',
+  rephrase: 'Rephrase',
+  rephraseTooltip: 'Rephrase the ticket description',
+  generateTooltip: 'Generate a new ticket description',
 };

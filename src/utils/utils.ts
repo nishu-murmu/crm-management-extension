@@ -100,11 +100,6 @@ export function getNameObject(name) {
   return { key: initials, value: name };
 }
 
-export function getKeyAndValue(name) {
-  const [key, value] = name.split('\n').map((n) => n.trim());
-  return { key, value };
-}
-
 function calculateDaysHoursAndMinutes(date1, date2) {
   const differenceInTime = date2.getTime() - date1.getTime();
   const days = Math.floor(differenceInTime / (1000 * 3600 * 24));
@@ -193,8 +188,11 @@ export async function injectTicketManager() {
   if (!location.href.includes(config.CRM_TICKETS_PAGE)) return;
 
   const daysWithoutReplyThresholds = { yellow: 2, orange: 5, red: 7 };
-  const styleSheet = document.createElement('style');
-  styleSheet.textContent = chrome.runtime.getURL('content-scripts/custom.css');
+  const styleSheet = document.createElement('link');
+  styleSheet.setAttribute('type', 'text/css');
+  styleSheet.setAttribute('rel', 'stylesheet');
+
+  styleSheet.href = chrome.runtime.getURL('content-scripts/custom.css');
   styleSheet.id = 'crm-tickets-management';
   document.head.appendChild(styleSheet);
 
@@ -214,11 +212,11 @@ export async function injectTicketManager() {
     .forEach((element) => element.remove());
 
   const today = new Date();
-  const ticketRows = document.querySelectorAll(
-    '.has-row-options'
-  ) as NodeListOf<HTMLElement>;
 
   function injectColors() {
+    const ticketRows = document.querySelectorAll(
+      '.has-row-options'
+    ) as NodeListOf<HTMLElement>;
     ticketRows.forEach((row) => {
       row.classList.add('clickable');
 
@@ -342,7 +340,7 @@ export async function injectTicketManager() {
   }
 
   async function observerCallback(list) {
-    await sleep(1000);
+    await sleep(100);
     injectColors();
   }
 

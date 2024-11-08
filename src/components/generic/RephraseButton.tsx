@@ -1,5 +1,7 @@
 import { sendMessage } from '@/src/utils/utils';
 import { translate } from '../../translation/translation';
+import TooltipComponent from '../core/Tooltip';
+import { SvgPenSparkles } from './Icons';
 
 const RephraseButton = () => {
   const [loading, setLoading] = useState(false);
@@ -38,15 +40,20 @@ const RephraseButton = () => {
     }
   }
   return (
-    <button
-      onClick={rephrase}
-      className={`cp-bg-blue-600 cp-text-white cp-px-6 cp-py-3 cp-rounded-lg cp-shadow-md hover:cp-bg-blue-700 cp-transition-colors cp-font-medium ${
-        loading ? 'cp-animate-pulse disabled cp-pointer-events-none' : ''
-      }`}
-      disabled={loading}
+    <div
+      onClick={() => {
+        rephrase();
+      }}
+      className="cp-p-2 cp-mt-1 cp-rounded-lg cp-cursor-pointer"
     >
-      {loading ? 'Rephrasing...' : translate('rephrase')}
-    </button>
+      <TooltipComponent
+        hoverElement={<SvgPenSparkles className="cp-w-4 cp-h-4" />}
+        id="rephraseTooltip"
+        placement="bottom-end"
+        contentData={translate('rephraseTooltip')}
+        className="!max-w-[320px] !w-full"
+      />
+    </div>
   );
 };
 

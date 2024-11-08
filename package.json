@@ -15,14 +15,17 @@
     "postinstall": "wxt prepare"
   },
   "dependencies": {
+    "@headlessui/react": "^2.2.0",
     "@heroicons/react": "^2.1.5",
     "jotai": "^2.10.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.26.2",
+    "react-tooltip": "^5.28.0",
     "uuid": "^11.0.2"
   },
   "devDependencies": {
+    "@types/chrome": "^0.0.280",
     "@types/react": "^18.3.11",
     "@types/react-dom": "^18.3.0",
     "@wxt-dev/module-react": "^1.1.1",

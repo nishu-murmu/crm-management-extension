@@ -25,8 +25,17 @@ export default defineConfig({
       default_icon: 'icon/128.png',
     },
     web_accessible_resources: [
-      { resources: ['icon/*.png', 'images/*.png'], matches: ['<all_urls>'] },
+      {
+        resources: [
+          'icon/*.png',
+          'images/*.png',
+          'assets/*',
+          'content-scripts/custom.css',
+        ],
+        matches: ['<all_urls>'],
+      },
     ],
+    host_permissions: ['<all_urls>'],
   },
   entrypointsDir: 'src',
   outDir: 'build',
