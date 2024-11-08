@@ -8,4 +8,6 @@ export const en = {
   generate: 'Generate',
   preview: 'Preview',
   generatedContentWillAppear: 'Generated content will appear here...',
+  selectAssignee: 'Select Assignee',
+  selectAnAssignee: '-- Select an Assignee --',
 };

@@ -3,6 +3,9 @@ import { config } from './src/config/config';
 
 // See https://wxt.dev/api/config.html
 export default defineConfig({
+  runner: {
+    startUrls: ['chrome://extensions'],
+  },
   hooks: {
     'build:manifestGenerated': (wxt, manifest) => {
       manifest.content_scripts ??= [];

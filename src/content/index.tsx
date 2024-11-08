@@ -1,9 +1,10 @@
 import { config } from '../config/config';
 import '../tailwind-css/input.css';
 import { injectTicketManager } from '../utils/utils';
-import { createGenerateButtonUi } from './CreateGenerateButtonUi';
-import { createRephraseButtonUi } from './CreateRephraseButtonUi';
-import { createSliderUi } from './CreateSliderUi';
+import { createAssigneeDropdownUi } from './AssigneeDropdownUi';
+import { createGenerateButtonUi } from './GenerateButtonUi';
+import { createRephraseButtonUi } from './RephraseButtonUi';
+import { createSliderUi } from './SliderUi';
 
 export default defineContentScript({
   matches: [config.CRM_TICKETS_PAGE, config.CRM_TICKET_PAGE + '*'],
@@ -12,22 +13,10 @@ export default defineContentScript({
   async main(ctx) {
     const sliderUi = await createSliderUi(ctx);
     sliderUi.mount();
-    // Inject ticket manager
-    setTimeout(() => {
-      injectTicketManager();
-    }, 1000);
+    await injectTicketManager();
 
-    const observer = new MutationObserver((list) => {
-      injectTicketManager();
-      observer.disconnect();
-    });
-
-    observer.observe(document.body, {
-      childList: true,
-      subtree: true,
-      attributes: true,
-      characterData: true,
-    });
+    const assigneeDropdownUi = await createAssigneeDropdownUi(ctx);
+    assigneeDropdownUi?.mount();
 
     if (location.href.includes(config.CRM_TICKET_PAGE)) {
       const generateButtonUi = await createGenerateButtonUi(ctx);
